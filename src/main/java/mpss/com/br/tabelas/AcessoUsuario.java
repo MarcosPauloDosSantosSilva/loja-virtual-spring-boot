@@ -2,6 +2,8 @@ package mpss.com.br.tabelas;
 
 import java.io.Serializable;
 
+import org.springframework.security.core.GrantedAuthority;
+
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -12,7 +14,7 @@ import jakarta.persistence.Table;
 @Entity
 @Table(name="acesso_usuario")
 @SequenceGenerator(name = "seq_acesso_usuario", sequenceName ="seq_acesso_usuario", allocationSize = 1, initialValue = 1)
-public class AcessoUsuario implements Serializable {
+public class AcessoUsuario implements GrantedAuthority {
 
 	
 	private static final long serialVersionUID = 1L;
@@ -21,6 +23,11 @@ public class AcessoUsuario implements Serializable {
 	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "seq_acesso_usuario" )
 	private Long id;
 	private String descricao;
+	@Override
+	public String getAuthority() {
+		// TODO Auto-generated method stub
+		return null;
+	}
 	public Long getId() {
 		return id;
 	}
@@ -34,5 +41,5 @@ public class AcessoUsuario implements Serializable {
 		this.descricao = descricao;
 	}
 	
-
+	
 }
